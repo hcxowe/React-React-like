@@ -20,7 +20,6 @@ module.exports = {
         filename: 'js/[name].[hash:5].js'
     },
     resolve: {
-        root : ['./scss'],
         extensions: ['', '.js', '.jsx'],
         alias: {
             "react": "anujs/dist/ReactIE.js",
@@ -35,7 +34,16 @@ module.exports = {
             {test: /\.(js|jsx)(\?.*$|$)/,exclude: /node_modules/,loader: 'babel-loader'},
             {test: /\.(png|jpg|gif|bmp|svg|swf)(\?.*$|$)/, loader: "url?limit=2048&name=img/[hash:5].[ext]" },
             {test: /\.css$/,loader: "style!css"},
-            {test: /\.scss$/,loader: ExtractTextPlugin.extract("style", "css?modules=true&sourceMap=true!postcss!sass", {publicPath: "./"})},
+            {test: /\.less$/,loader: ExtractTextPlugin.extract("style", "css?modules=true&sourceMap=true!postcss!less", {publicPath: "./"})},
+            //{test: /.(woff|woff2|svg|eot|ttf)??.*$/, loader: 'file-loader?name=fonts/[name].[ext]'},
+            /* {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                  limit: 10000,
+                  name: 'fonts/[name].[hash:7].[ext]'
+                }
+              } */
         ],
         postLoaders: [
             // {test: /\.(js|jsx)(\?.*$|$)/,loader: "es3ify-loader"},

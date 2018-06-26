@@ -2,6 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom";
 import 'create-react-class';
 //import './less/global.less'
+/* import './assets/antd/index.css'; 
+import './assets/antd/fontface.css' */
+/* import { DatePicker } from 'antd'; */
+import ChessGame from './components/ChessGame'
+
 import { Router, Route, IndexRedirect, IndexRoute, Link, hashHistory  } from 'react-router'
 
 class App extends React.Component{
@@ -9,6 +14,11 @@ class App extends React.Component{
         return (
             <div>
                 <p>App</p>
+                <ul role="nav">
+                    <li><Link to="/about" activeStyle={{color:'red'}}>About</Link></li>
+                    <li><Link to="/repos" activeStyle={{color:'red'}}>Repos</Link></li>
+                    <li><Link to="/game" activeStyle={{color:'red'}}>Game</Link></li>
+                </ul>
                 <div>{this.props.children}</div>
             </div>
         )
@@ -45,7 +55,7 @@ const About = (props) => {
 const Join = () => {
     return (
         <div>
-            join
+            {/* <DatePicker /> */}
         </div>
     )
 }
@@ -58,8 +68,9 @@ ReactDOM.render(
             <IndexRoute component={Home}/>
             <Route path="repos" component={Repos} />
             <Route path="about" component={About}>
-                <Route path="join" component={Join} />
+                <IndexRoute component={Join} />
             </Route>
+            <Route path="game" component={ChessGame} />
         </Route>
     </Router>,
     document.getElementById("app")

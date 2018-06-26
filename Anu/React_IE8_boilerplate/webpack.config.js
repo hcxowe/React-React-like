@@ -48,6 +48,10 @@ module.exports = {
                 test: /\.less$/,
                 loader: ExtractTextPlugin.extract("style", "css?modules=true&sourceMap=true!postcss!less", {publicPath: "./"})
             },
+            /* {
+                test: /.(woff|woff2|svg|eot|ttf)??.*$/, 
+                loader: 'file-loader?name=fonts/[name].[ext]'
+            } */
         ],
         postLoaders: [
             // {test: /\.(js|jsx)(\?.*$|$)/,loader: "es3ify-loader"},
