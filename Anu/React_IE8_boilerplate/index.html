@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/console-polyfill/0.3.0/index.js"></script>
+</head>
+<body>
+    <button id="btnSet">设置</button>
+    <button id="btnGet">获取</button>
+    <button id="btnClear">清空</button>
+
+    <script>
+        $(function() {
+            $('#btnSet').click(function() {
+                localStorage.setItem('key', 'value')
+                alert(localStorage.getItem('key'))
+            })
+
+            $('#btnGet').click(function() {
+                alert(localStorage.getItem('key'))
+            })
+
+            $('#btnClear').click(function() {
+                localStorage.removeItem('key')
+            })
+
+            /* document.attachEvent("onstorage", function(e) {
+                debugger
+                alert(1)
+                console.log(JSON.stringify(e))
+            });  */  
+
+            window.addEventListener('storage', function(ev) {
+                console.log('storage')
+                console.log(ev)
+            })
+        })
+    </script>
+</body>
+</html>
